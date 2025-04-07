@@ -110,35 +110,36 @@ document.querySelectorAll('.product-section').forEach((section, index) => {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: section,
-            start: 'top center+=20%',
+            start: 'top bottom-=20%',
             end: 'bottom center',
-            toggleActions: 'play none none reverse'
+            toggleActions: 'play none none reverse',
+            once: true
         }
     });
 
     tl.to(display, {
         opacity: 1,
-        duration: 0.3
+        duration: 0.4
     })
     .to(image, {
         scale: 1,
         opacity: 1,
-        duration: 0.4,
+        duration: 0.5,
         ease: 'back.out(1.4)'
-    }, '-=0.2')
+    }, '-=0.3')
     .to(card, {
         x: 0,
         opacity: 1,
-        duration: 0.4,
+        duration: 0.5,
         ease: 'power3.out'
-    }, '-=0.3')
+    }, '-=0.4')
     .to(cardElements, {
         x: 0,
         opacity: 1,
-        duration: 0.3,
-        stagger: 0.05,
+        duration: 0.4,
+        stagger: 0.06,
         ease: 'power2.out'
-    }, '-=0.2');
+    }, '-=0.3');
 
     // Faster parallax effect for images
     gsap.to(image, {
