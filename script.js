@@ -47,8 +47,17 @@ document.querySelectorAll('.quantity-controls').forEach(control => {
 
     function updatePrice() {
         const quantity = parseInt(input.value);
-        const totalPrice = (basePrice * quantity).toFixed(2);
-        priceElement.textContent = `${currencySymbol}${totalPrice}`;
+        let totalPrice;
+        
+        if (quantity <= 3) {
+            // First 3 items at $14 each
+            totalPrice = quantity * 14;
+        } else {
+            // First 3 at $14, remaining at $10
+            totalPrice = (3 * 14) + ((quantity - 3) * 10);
+        }
+        
+        priceElement.textContent = `$${totalPrice.toFixed(2)}`;
         
         // Add a flash effect when price updates
         gsap.fromTo(priceElement, 
